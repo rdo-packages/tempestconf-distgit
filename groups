@@ -1,3 +1,5 @@
-# UUID                                  	Group Name
-#
-2165fcef1378b253b5534dc3face2846d40427cf	openstack/tempestconf-distgit-ptl
+# UUID          Group Name
+False 	Non-Interactive Users
+62c8289c61edf2d7fc2469d1e9db567e58582c40       	openstack/tempestconf-distgit-core
+2165fcef1378b253b5534dc3face2846d40427cf        	openstack/tempestconf-distgit-ptl
+global:Registered-Users		Registered Users
