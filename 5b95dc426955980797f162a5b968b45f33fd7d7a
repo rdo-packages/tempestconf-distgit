@@ -75,6 +75,24 @@
       "revId": "5b95dc426955980797f162a5b968b45f33fd7d7a",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dab895d6_acd6cec3",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-01-23T15:45:54Z",
+      "side": 1,
+      "message": "It\u0027s ok if the content is exactly the same so this will work fine if installed versions of python2-tempestconf and python3-tempestconf is the same.",
+      "parentUuid": "dab895d6_0c4edac1",
+      "revId": "5b95dc426955980797f162a5b968b45f33fd7d7a",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
