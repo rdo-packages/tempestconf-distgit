@@ -16,6 +16,24 @@
       "revId": "5b95dc426955980797f162a5b968b45f33fd7d7a",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dab895d6_8c5aea81",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2017-01-23T15:28:29Z",
+      "side": 1,
+      "message": "yes, It is same config.",
+      "parentUuid": "dab895d6_8c83cacb",
+      "revId": "5b95dc426955980797f162a5b968b45f33fd7d7a",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
