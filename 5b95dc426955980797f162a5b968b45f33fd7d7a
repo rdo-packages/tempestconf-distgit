@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dab895d6_8c83cacb",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 141
+      },
+      "writtenOn": "2017-01-23T15:11:09Z",
+      "side": 1,
+      "message": "Is the ${_sysconfdir}/tempest/*.conf the same that it is used for the python2 package?",
+      "revId": "5b95dc426955980797f162a5b968b45f33fd7d7a",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
