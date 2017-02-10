@@ -1,3 +1,4 @@
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global pname tempestconf
 
 %if 0%{?fedora} >= 24
@@ -13,7 +14,7 @@ Summary:        OpenStack Tempest Config generator
 
 License:        ASL 2.0
 URL:            https://github.com/redhat-openstack/python-%{pname}
-Source0:        https://github.com/redhat-openstack/python-%{pname}/archive/master.tar.gz
+Source0:        https://github.com/redhat-openstack/python-%{pname}/archive/%{upstream_version}.tar.gz
 
 BuildArch:      noarch
 
