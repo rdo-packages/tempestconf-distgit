@@ -30,6 +30,7 @@ BuildRequires:  python-oslotest
 BuildRequires:  python-testrepository
 BuildRequires:  python-testscenarios
 BuildRequires:  python-testtools
+BuildRequires:  python-tempest
 
 %description
 python-tempestconf will automatically generates the tempest
@@ -91,6 +92,7 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
+BuildRequires:  python3-tempest
 
 Requires:   python3-subunit
 Requires:   python3-oslotest
