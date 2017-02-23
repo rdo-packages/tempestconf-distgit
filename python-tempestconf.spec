@@ -194,3 +194,4 @@ rm -rf .testrepository
 * Fri Feb 10 2017 Alfredo Moralejo <amoralej@redhat.com> 1.0.0-1
 - Update to 1.0.0
 
+# REMOVEME: error caused by commit https://github.com/redhat-openstack/python-tempestconf.git/commit/6c6270bc519aa095d2e80a738517e8ebc07fe1c5
