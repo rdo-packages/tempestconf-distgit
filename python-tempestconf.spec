@@ -31,6 +31,7 @@ BuildRequires:  python-testrepository
 BuildRequires:  python-testscenarios
 BuildRequires:  python-testtools
 BuildRequires:  python-tempest
+BuildRequires:  python-os-client-config
 
 %description
 python-tempestconf will automatically generates the tempest
@@ -44,6 +45,7 @@ Requires:       python-pbr >= 1.8
 Requires:       python-tempest >= 14.0.0
 Requires:       python2-setuptools
 Requires:       python-requests
+Requires:       python-os-client-config
 
 %description -n python2-%{pname}
 python-tempestconf will automatically generates the tempest
@@ -78,6 +80,7 @@ Requires:       python3-pbr >= 1.8
 Requires:       python3-tempest >= 14.0.0
 Requires:       python3-setuptools
 Requires:       python3-requests
+Requires:       python3-os-client-config
 
 %description -n python3-%{pname}
 python-tempestconf will automatically generates the tempest
@@ -93,6 +96,7 @@ BuildRequires:  python3-testrepository
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 BuildRequires:  python3-tempest
+BuildRequires:  python3-os-client-config
 
 Requires:   python3-subunit
 Requires:   python3-oslotest
