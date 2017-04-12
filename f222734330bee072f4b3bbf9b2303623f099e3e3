@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa98f980_1ac44f3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2017-04-12T11:07:27Z",
+      "side": 1,
+      "message": "It does not, rather this is a duplicate of https://review.rdoproject.org/r/6241",
+      "revId": "f222734330bee072f4b3bbf9b2303623f099e3e3",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
