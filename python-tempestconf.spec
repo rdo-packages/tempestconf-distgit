@@ -193,3 +193,4 @@ rm -rf .testrepository
 %doc doc/build/html
 
 %changelog
+# REMOVEME: error caused by commit https://github.com/redhat-openstack/python-tempestconf.git/commit/6220c362903469c4847eae3377d93b26939e7cab
