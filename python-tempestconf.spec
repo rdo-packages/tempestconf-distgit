@@ -26,6 +26,7 @@ BuildRequires:  git
 # test dependencies
 
 BuildRequires:  python-subunit
+BuildRequires:  python-os-client-config
 BuildRequires:  python-oslotest
 BuildRequires:  python-testrepository
 BuildRequires:  python-testscenarios
@@ -42,6 +43,7 @@ Summary:        OpenStack Tempest Config generator
 
 Requires:       python-pbr >= 1.8
 Requires:       python-tempest >= 14.0.0
+Requires:       python2-os-client-config
 Requires:       python2-setuptools
 Requires:       python-requests
 
@@ -54,6 +56,7 @@ Summary:    python-tempestconf tests
 Requires:   python2-%{pname} = %{version}-%{release}
 
 Requires:   python-subunit
+Requires:   python2-os-client-config
 Requires:   python-oslotest
 Requires:   python-testrepository
 Requires:   python-testscenarios
