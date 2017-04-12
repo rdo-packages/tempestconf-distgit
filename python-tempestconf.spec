@@ -8,7 +8,7 @@
 %endif
 
 Name:           python-%{pname}
-Version:        1.0.0
+Version:        1.1.0
 Release:        1%{?dist}
 Summary:        OpenStack Tempest Config generator
 
@@ -197,6 +197,12 @@ rm -rf .testrepository
 %doc doc/build/html
 
 %changelog
+* Thu Apr 13 2017 Chandan Kumar <chkumar@redhat.com> 1.1.0-1
+- Update to 1.1.0
+- Added support to remove any from tempest configuration
+- Use os-client-config for creating tempest configuration
+- Enables few keystone extension
+
 * Fri Feb 10 2017 Alfredo Moralejo <amoralej@redhat.com> 1.0.0-1
 - Update to 1.0.0
 
