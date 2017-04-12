@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa98f980_3ac5935b",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 141
+      },
+      "writtenOn": "2017-04-12T10:14:05Z",
+      "side": 1,
+      "message": "Isn\u0027t it python2-os-client-config, or does python-os-client-config provides it?",
+      "revId": "9ef06678ff356950d93ea5690d79f21b0054cdb0",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
