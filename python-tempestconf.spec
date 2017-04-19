@@ -8,7 +8,7 @@
 %endif
 
 Name:           python-%{pname}
-Version:        1.1.0
+Version:        1.1.1
 Release:        1%{?dist}
 Summary:        OpenStack Tempest Config generator
 
@@ -197,6 +197,10 @@ rm -rf .testrepository
 %doc doc/build/html
 
 %changelog
+* Wed Apr 19 2017 Chandan Kumar <chkumar@redhat.com> 1.1.1-1
+- Update to 1.1.1
+- Fix for Unsetting the security_compliance flag
+
 * Thu Apr 13 2017 Chandan Kumar <chkumar@redhat.com> 1.1.0-1
 - Update to 1.1.0
 - Added support to remove any from tempest configuration
