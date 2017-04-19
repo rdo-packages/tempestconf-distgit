@@ -9,12 +9,14 @@
 
 Name:           python-%{pname}
 Version:        1.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Tempest Config generator
 
 License:        ASL 2.0
 URL:            https://github.com/redhat-openstack/python-%{pname}
 Source0:        https://github.com/redhat-openstack/python-%{pname}/archive/%{upstream_version}.tar.gz
+
+Patch0001: 0001-Unsetting-the-security_compliance-flag.patch
 
 BuildArch:      noarch
 
@@ -197,6 +199,9 @@ rm -rf .testrepository
 %doc doc/build/html
 
 %changelog
+* Wed Apr 19 2017 Chandan Kumar <chkumar@redhat.com> 1.1.0-2
+- Unsetting the security_compliance flag
+
 * Thu Apr 13 2017 Chandan Kumar <chkumar@redhat.com> 1.1.0-1
 - Update to 1.1.0
 - Added support to remove any from tempest configuration
