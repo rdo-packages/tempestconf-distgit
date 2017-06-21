@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa7fdbe_a73b30ea",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2017-06-21T14:04:48Z",
+      "side": 1,
+      "message": "Update the version in spec file to 1.1.2",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "2b75940cda17fcf922fcd6b37f0f9a487c225049",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
