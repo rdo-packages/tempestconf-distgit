@@ -22,6 +22,29 @@
       "revId": "2b75940cda17fcf922fcd6b37f0f9a487c225049",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa7fdbe_4a31a9eb",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2017-06-21T14:27:14Z",
+      "side": 1,
+      "message": "release is missing. It should be 1.1.2-1",
+      "range": {
+        "startLine": 200,
+        "startChar": 51,
+        "endLine": 200,
+        "endChar": 56
+      },
+      "revId": "2b75940cda17fcf922fcd6b37f0f9a487c225049",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
