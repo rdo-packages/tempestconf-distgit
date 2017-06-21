@@ -197,6 +197,15 @@ rm -rf .testrepository
 %doc doc/build/html
 
 %changelog
+* Wed Jun 21 2017 Pratee Arora <parora@redhat.com> 1.1.2
+- Update to 1.1.2
+- Fix --remove option
+- Fix setting of admin_password when cli is blank
+- Replace allow_tenant_isolation parameter
+  with use_dynamic_credentials
+- Adding the validation section with image_ssh_user=cirros
+- Add support for admin parameters moving to auth
+
 * Wed Apr 19 2017 Chandan Kumar <chkumar@redhat.com> 1.1.1-1
 - Update to 1.1.1
 - Fix for Unsetting the security_compliance flag
