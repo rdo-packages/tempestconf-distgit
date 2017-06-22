@@ -8,7 +8,7 @@
 %endif
 
 Name:           python-%{pname}
-Version:        1.1.1
+Version:        1.1.2
 Release:        1%{?dist}
 Summary:        OpenStack Tempest Config generator
 
@@ -197,6 +197,9 @@ rm -rf .testrepository
 %doc doc/build/html
 
 %changelog
+* Thu Jun 22 2017 rdo-trunk <javier.pena@redhat.com> 1.1.2-1
+- Update to 1.1.2
+
 * Wed Apr 19 2017 Chandan Kumar <chkumar@redhat.com> 1.1.1-1
 - Update to 1.1.1
 - Fix for Unsetting the security_compliance flag
