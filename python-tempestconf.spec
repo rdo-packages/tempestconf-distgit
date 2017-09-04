@@ -8,8 +8,8 @@
 %endif
 
 Name:           python-%{pname}
-Version:        XXX
-Release:        XXX
+Version:        1.1.3
+Release:        1%{?dist}
 Summary:        OpenStack Tempest Config generator
 
 License:        ASL 2.0
@@ -197,3 +197,6 @@ rm -rf .testrepository
 %doc doc/build/html
 
 %changelog
+* Mon Sep 04 2017 rdo-trunk <javier.pena@redhat.com> 1.1.3-1
+- Update to 1.1.3
+
