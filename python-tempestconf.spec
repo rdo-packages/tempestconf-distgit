@@ -8,7 +8,7 @@
 %endif
 
 Name:           python-%{pname}
-Version:        1.1.2
+Version:        1.1.3
 Release:        1%{?dist}
 Summary:        OpenStack Tempest Config generator
 
@@ -197,6 +197,9 @@ rm -rf .testrepository
 %doc doc/build/html
 
 %changelog
+* Mon Sep 04 2017 rdo-trunk <javier.pena@redhat.com> 1.1.3-1
+- Update to 1.1.3
+
 * Wed Jun 21 2017 Pratee Arora <parora@redhat.com> 1.1.2-1
 - Update to 1.1.2
 - Fix --remove option
@@ -218,4 +221,3 @@ rm -rf .testrepository
 
 * Fri Feb 10 2017 Alfredo Moralejo <amoralej@redhat.com> 1.0.0-1
 - Update to 1.0.0
-
