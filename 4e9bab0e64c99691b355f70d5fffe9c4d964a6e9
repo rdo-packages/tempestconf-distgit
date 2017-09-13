@@ -1,0 +1,8 @@
+Code-Review+2: hguemar <hguemar@fedoraproject.org>
+Verified+2: hguemar <hguemar@fedoraproject.org>
+Workflow+1: hguemar <hguemar@fedoraproject.org>
+Submitted-by: hguemar <hguemar@fedoraproject.org>
+Submitted-at: Wed, 13 Sep 2017 18:33:26 +0000
+Reviewed-on: https://review.rdoproject.org/r/9477
+Project: openstack/tempestconf-distgit
+Branch: refs/heads/ocata-rdo
