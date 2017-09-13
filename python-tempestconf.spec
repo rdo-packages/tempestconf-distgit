@@ -8,7 +8,7 @@
 %endif
 
 Name:           python-%{pname}
-Version:        1.1.2
+Version:        1.1.3
 Release:        1%{?dist}
 Summary:        OpenStack Tempest Config generator
 
@@ -197,6 +197,13 @@ rm -rf .testrepository
 %doc doc/build/html
 
 %changelog
+* Wed Sep 13 2017 Chandan Kumar <chkumar@redhat.com> 1.1.3-1
+- Improvements to Cinder Backup/Image tempest confs
+- Support for Ceilometer
+- Cirros image defaults to 0.3.5
+- Ceilometer service detection
+- Bump to 1.1.3
+
 * Wed Jun 21 2017 Pratee Arora <parora@redhat.com> 1.1.2-1
 - Update to 1.1.2
 - Fix --remove option
