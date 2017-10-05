@@ -7,6 +7,10 @@
 %global with_python3 0
 %endif
 
+%global common_desc \
+python-tempestconf will automatically generates the tempest \
+configuration based on your cloud.
+
 Name:           python-%{pname}
 Version:        XXX
 Release:        XXX
@@ -34,8 +38,7 @@ BuildRequires:  python-tempest
 BuildRequires:  python-os-client-config
 
 %description
-python-tempestconf will automatically generates the tempest
-configuration based on your cloud.
+%{common_desc}
 
 %package -n     python2-%{pname}
 Summary:        OpenStack Tempest Config generator
@@ -48,8 +51,7 @@ Requires:       python-requests
 Requires:       python-os-client-config
 
 %description -n python2-%{pname}
-python-tempestconf will automatically generates the tempest
-configuration based on your cloud.
+%{common_desc}
 
 %package -n python2-%{pname}-tests
 Summary:    python-tempestconf tests
@@ -62,8 +64,7 @@ Requires:   python-testscenarios
 Requires:   python-testtools
 
 %description -n python2-%{pname}-tests
-python-tempestconf will automatically generates the tempest
-configuration based on your cloud.
+%{common_desc}
 
 It contains the test suite.
 
@@ -83,8 +84,7 @@ Requires:       python3-requests
 Requires:       python3-os-client-config
 
 %description -n python3-%{pname}
-python-tempestconf will automatically generates the tempest
-configuration based on your cloud.
+%{common_desc}
 
 %package -n python3-%{pname}-tests
 Summary:    python-tempestconf tests
@@ -105,8 +105,7 @@ Requires:   python3-testscenarios
 Requires:   python3-testtools
 
 %description -n python3-%{pname}-tests
-python-tempestconf will automatically generates the tempest
-configuration based on your cloud.
+%{common_desc}
 
 It contains the test suite.
 %endif
@@ -118,8 +117,7 @@ BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
 
 %description -n python-%{pname}-doc
-python-tempestconf will automatically generates the tempest
-configuration based on your cloud.
+%{common_desc}
 
 Documentation for python-tempestconf
 
