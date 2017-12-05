@@ -31,7 +31,7 @@ BuildRequires:  git
 
 BuildRequires:  python-subunit
 BuildRequires:  python-oslotest
-BuildRequires:  python-testrepository
+BuildRequires:  python-stestr
 BuildRequires:  python-testscenarios
 BuildRequires:  python-testtools
 BuildRequires:  python-tempest
@@ -92,7 +92,7 @@ Requires:   python3-%{pname} = %{version}-%{release}
 
 BuildRequires:  python3-subunit
 BuildRequires:  python3-oslotest
-BuildRequires:  python3-testrepository
+BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 BuildRequires:  python3-tempest
@@ -152,11 +152,13 @@ mkdir -p %{buildroot}/etc/tempest
 mv %{buildroot}/usr/etc/tempest/* %{buildroot}/etc/tempest
 
 %check
-%{__python2} setup.py testr
-
+export OS_TEST_PATH='./config_tempest/tests'
+export PATH=$PATH:$RPM_BUILD_ROOT/usr/bin
+export PYTHONPATH=$PWD
+stestr --test-path $OS_TEST_PATH run
 %if 0%{?with_python3}
-rm -rf .testrepository
-%{__python3} setup.py testr
+rm -rf .stestr
+stestr-3 --test-path $OS_TEST_PATH run
 %endif
 
 %files -n python2-%{pname}
