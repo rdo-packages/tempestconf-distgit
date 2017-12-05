@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba7be1f8_a5aed9e5",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2017-12-05T14:12:22Z",
+      "side": 0,
+      "message": "So stestr is a regression in developer UX :(\nCould be some of that boilerplate moved into PBR as \"stestr\" subcommand?",
+      "revId": "af693fb6a5bc645d7148c027297ff2267ec753fd",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
