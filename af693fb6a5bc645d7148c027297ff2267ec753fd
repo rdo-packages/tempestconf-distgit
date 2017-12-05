@@ -16,6 +16,24 @@
       "revId": "af693fb6a5bc645d7148c027297ff2267ec753fd",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba7be1f8_65ca21a3",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2017-12-05T14:56:00Z",
+      "side": 0,
+      "message": "There is a governance proposal under review for the same: https://review.openstack.org/#/c/519751/",
+      "parentUuid": "ba7be1f8_a5aed9e5",
+      "revId": "af693fb6a5bc645d7148c027297ff2267ec753fd",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
