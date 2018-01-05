@@ -49,6 +49,8 @@ Requires:       python-tempest >= 14.0.0
 Requires:       python2-setuptools
 Requires:       python-requests
 Requires:       python-os-client-config
+Requires:       python-castellan
+Requires:       python2-cryptography
 
 %description -n python2-%{pname}
 %{common_desc}
@@ -82,6 +84,8 @@ Requires:       python3-tempest >= 14.0.0
 Requires:       python3-setuptools
 Requires:       python3-requests
 Requires:       python3-os-client-config
+Requires:       python-castellan
+Requires:       python3-cryptography
 
 %description -n python3-%{pname}
 %{common_desc}
