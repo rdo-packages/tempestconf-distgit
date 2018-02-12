@@ -23,19 +23,19 @@ Source0:        https://github.com/openstack/python-%{pname}/archive/%{upstream_
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
-BuildRequires:  python-pbr >= 1.8
+BuildRequires:  python2-pbr >= 1.8
 BuildRequires:  python2-setuptools
 BuildRequires:  git
 
 # test dependencies
 
-BuildRequires:  python-subunit
-BuildRequires:  python-oslotest
-BuildRequires:  python-stestr
-BuildRequires:  python-testscenarios
-BuildRequires:  python-testtools
-BuildRequires:  python-tempest
-BuildRequires:  python-os-client-config
+BuildRequires:  python2-subunit
+BuildRequires:  python2-oslotest
+BuildRequires:  python2-stestr
+BuildRequires:  python2-testscenarios
+BuildRequires:  python2-testtools
+BuildRequires:  python2-tempest
+BuildRequires:  python2-os-client-config
 
 %description
 %{common_desc}
@@ -44,12 +44,12 @@ BuildRequires:  python-os-client-config
 Summary:        OpenStack Tempest Config generator
 %{?python_provide:%python_provide python2-%{pname}}
 
-Requires:       python-pbr >= 1.8
-Requires:       python-tempest >= 14.0.0
+Requires:       python2-pbr >= 1.8
+Requires:       python2-tempest >= 14.0.0
 Requires:       python2-setuptools
-Requires:       python-requests
-Requires:       python-os-client-config
-Requires:       python-castellan
+Requires:       python2-requests
+Requires:       python2-os-client-config
+Requires:       python2-castellan
 Requires:       python2-cryptography
 
 %description -n python2-%{pname}
@@ -59,11 +59,11 @@ Requires:       python2-cryptography
 Summary:    python-tempestconf tests
 Requires:   python2-%{pname} = %{version}-%{release}
 
-Requires:   python-subunit
-Requires:   python-oslotest
-Requires:   python-testrepository
-Requires:   python-testscenarios
-Requires:   python-testtools
+Requires:   python2-subunit
+Requires:   python2-oslotest
+Requires:   python2-testrepository
+Requires:   python2-testscenarios
+Requires:   python2-testtools
 
 %description -n python2-%{pname}-tests
 %{common_desc}
@@ -117,8 +117,8 @@ It contains the test suite.
 %package -n python-%{pname}-doc
 Summary:        python-tempestconf documentation
 
-BuildRequires:  python-sphinx
-BuildRequires:  python-oslo-sphinx
+BuildRequires:  python2-sphinx
+BuildRequires:  python2-oslo-sphinx
 
 %description -n python-%{pname}-doc
 %{common_desc}
