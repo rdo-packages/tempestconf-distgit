@@ -12,8 +12,8 @@ python-tempestconf will automatically generates the tempest \
 configuration based on your cloud.
 
 Name:           python-%{pname}
-Version:        XXX
-Release:        XXX
+Version:        1.1.4
+Release:        1%{?dist}
 Summary:        OpenStack Tempest Config generator
 
 License:        ASL 2.0
@@ -201,3 +201,5 @@ stestr-3 --test-path $OS_TEST_PATH run
 %doc doc/build/html
 
 %changelog
+* Mon Feb 19 2018 Chandan Kumar <chkumar@redhat.com> 1.1.4-1
+- Update to 1.1.4
