@@ -51,6 +51,11 @@ Requires:       python2-requests
 Requires:       python2-os-client-config
 Requires:       python2-castellan
 Requires:       python2-cryptography
+%if 0%{?fedora} > 0
+Requires:      python2-pyyaml
+%else
+Requires:      PyYAML
+%endif
 
 %description -n python2-%{pname}
 %{common_desc}
@@ -107,6 +112,7 @@ Requires:   python3-oslotest
 Requires:   python3-testrepository
 Requires:   python3-testscenarios
 Requires:   python3-testtools
+Requires:   python3-PyYAML
 
 %description -n python3-%{pname}-tests
 %{common_desc}
