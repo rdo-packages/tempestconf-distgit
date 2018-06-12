@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab921fb_25126763",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 141
+      },
+      "writtenOn": "2018-06-12T20:13:57Z",
+      "side": 1,
+      "message": "and -W ? It\u0027s not specified in the docs tox job of python-tempestconf, but I think it\u0027s enabled by default in the upstream job which builds the documentation.",
+      "revId": "727870b50c952a265377c9329c75a574e938ad97",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
