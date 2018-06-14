@@ -190,7 +190,6 @@ stestr-3 --test-path $OS_TEST_PATH run
 %{python3_sitelib}/config_tempest
 %exclude %{python3_sitelib}/config_tempest/tests
 %{python3_sitelib}/python_tempestconf-*.egg-info
-%config(noreplace) %{_sysconfdir}/tempest/*.conf
 
 %files -n python3-%{pname}-tests
 %license LICENSE
