@@ -152,10 +152,6 @@ ln -sf %{_bindir}/discover-tempest-config-3 %{buildroot}/%{_bindir}/discover-tem
 cp %{buildroot}/%{_bindir}/discover-tempest-config %{buildroot}/%{_bindir}/discover-tempest-config-2
 ln -sf %{_bindir}/discover-tempest-config-2 %{buildroot}/%{_bindir}/discover-tempest-config-%{python2_version}
 
-# move config files at proper place
-mkdir -p %{buildroot}/etc/tempest
-mv %{buildroot}/usr/etc/tempest/* %{buildroot}/etc/tempest
-
 %check
 export OS_TEST_PATH='./config_tempest/tests'
 export PATH=$PATH:$RPM_BUILD_ROOT/usr/bin
@@ -190,7 +186,6 @@ stestr-3 --test-path $OS_TEST_PATH run
 %{python3_sitelib}/config_tempest
 %exclude %{python3_sitelib}/config_tempest/tests
 %{python3_sitelib}/python_tempestconf-*.egg-info
-%config(noreplace) %{_sysconfdir}/tempest/*.conf
 
 %files -n python3-%{pname}-tests
 %license LICENSE
