@@ -20,6 +20,9 @@ License:        ASL 2.0
 URL:            http://git.openstack.org/cgit/openstack/python-%{pname}
 Source0:        http://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz
 
+# FIXME(ykarel) Remove me once https://review.openstack.org/#/c/568869/ is merged
+Patch0001:      0001-Use-healthcheck-api-to-determine-swift-service.patch
+
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
