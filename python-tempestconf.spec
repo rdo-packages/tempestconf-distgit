@@ -126,6 +126,7 @@ Summary:        python-tempestconf documentation
 BuildRequires:  python2-sphinx
 BuildRequires:  python2-oslo-sphinx
 BuildRequires:  python2-openstackdocstheme
+BuildRequires:  python2-sphinx-argparse >= 0.2.2
 
 %description -n python-%{pname}-doc
 %{common_desc}
