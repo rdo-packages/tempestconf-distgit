@@ -1,0 +1,10 @@
+Code-Review+1: Arx Cruz <arxcruz@gmail.com>
+Code-Review+1: Martin Kopec <xkopec42@gmail.com>
+Code-Review+2: chkumar246 <chkumar@redhat.com>
+Workflow+1: chkumar246 <chkumar@redhat.com>
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Thu, 26 Jul 2018 14:43:28 +0000
+Reviewed-on: https://review.rdoproject.org/r/15028
+Project: openstack/tempestconf-distgit
+Branch: refs/heads/rpm-master
