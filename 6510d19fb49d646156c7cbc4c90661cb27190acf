@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9abe1de1_e62599c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2018-08-20T07:14:55Z",
+      "side": 1,
+      "message": "Changes looks OK but a query:-\naren\u0027t these synched from requirements.txt https://github.com/openstack/python-tempestconf/blob/master/requirements.txt or requirements.txt will be updated later?",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "6510d19fb49d646156c7cbc4c90661cb27190acf",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
