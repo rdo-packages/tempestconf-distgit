@@ -23,7 +23,7 @@ Source0:        http://tarballs.openstack.org/%{name}/%{name}-%{upstream_version
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
-BuildRequires:  python2-pbr >= 1.8
+BuildRequires:  python2-pbr >= 3.1.1
 BuildRequires:  python2-setuptools
 BuildRequires:  git
 
@@ -44,8 +44,8 @@ BuildRequires:  python2-os-client-config
 Summary:        OpenStack Tempest Config generator
 %{?python_provide:%python_provide python2-%{pname}}
 
-Requires:       python2-pbr >= 1.8
-Requires:       python2-tempest >= 14.0.0
+Requires:       python2-pbr >= 3.1.1
+Requires:       python2-tempest >= 1:18.0.0
 Requires:       python2-setuptools
 Requires:       python2-requests
 Requires:       python2-os-client-config
@@ -81,11 +81,11 @@ Summary:        OpenStack Tempest Config generator
 %{?python_provide:%python_provide python3-%{pname}}
 
 BuildRequires:  python3-devel
-BuildRequires:  python3-pbr >= 1.8
+BuildRequires:  python3-pbr >= 3.1.1
 BuildRequires:  python3-setuptools
 
-Requires:       python3-pbr >= 1.8
-Requires:       python3-tempest >= 14.0.0
+Requires:       python3-pbr >= 3.1.1
+Requires:       python3-tempest >= 1:18.0.0
 Requires:       python3-setuptools
 Requires:       python3-requests
 Requires:       python3-os-client-config
@@ -104,7 +104,7 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
-BuildRequires:  python3-tempest
+BuildRequires:  python3-tempest >= 1:18.0.0
 BuildRequires:  python3-os-client-config
 
 Requires:   python3-subunit
