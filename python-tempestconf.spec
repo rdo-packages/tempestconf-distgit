@@ -13,7 +13,7 @@ configuration based on your cloud.
 
 Name:           python-%{pname}
 Version:        1.1.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Tempest Config generator
 
 License:        ASL 2.0
@@ -51,6 +51,11 @@ Requires:       python2-requests
 Requires:       python2-os-client-config
 Requires:       python2-castellan
 Requires:       python2-cryptography
+%if 0%{?fedora} > 0
+Requires:      python2-pyyaml
+%else
+Requires:      PyYAML
+%endif
 
 %description -n python2-%{pname}
 %{common_desc}
@@ -86,6 +91,7 @@ Requires:       python3-requests
 Requires:       python3-os-client-config
 Requires:       python-castellan
 Requires:       python3-cryptography
+Requires:       python3-PyYAML
 
 %description -n python3-%{pname}
 %{common_desc}
@@ -118,7 +124,11 @@ It contains the test suite.
 Summary:        python-tempestconf documentation
 
 BuildRequires:  python2-sphinx
+# FIXME(chkumar246): Keeping oslo-sphinx dependency in order
+# to make cbs build passing
 BuildRequires:  python2-oslo-sphinx
+BuildRequires:  python2-openstackdocstheme
+BuildRequires:  python2-sphinx-argparse >= 0.2.2
 
 %description -n python-%{pname}-doc
 %{common_desc}
@@ -136,7 +146,8 @@ Documentation for python-tempestconf
 %endif
 
 # generate html docs
-%{__python2} setup.py build_sphinx
+export PYTHONPATH=.
+sphinx-build -W -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -151,9 +162,8 @@ ln -sf %{_bindir}/discover-tempest-config-3 %{buildroot}/%{_bindir}/discover-tem
 cp %{buildroot}/%{_bindir}/discover-tempest-config %{buildroot}/%{_bindir}/discover-tempest-config-2
 ln -sf %{_bindir}/discover-tempest-config-2 %{buildroot}/%{_bindir}/discover-tempest-config-%{python2_version}
 
-# move config files at proper place
-mkdir -p %{buildroot}/etc/tempest
-mv %{buildroot}/usr/etc/tempest/* %{buildroot}/etc/tempest
+# The only file from this location is going to be removed soon
+rm -rf %{buildroot}/usr/etc/tempest/*
 
 %check
 export OS_TEST_PATH='./config_tempest/tests'
@@ -174,7 +184,6 @@ stestr-3 --test-path $OS_TEST_PATH run
 %{python2_sitelib}/config_tempest
 %exclude %{python2_sitelib}/config_tempest/tests
 %{python2_sitelib}/python_tempestconf-*.egg-info
-%config(noreplace) %{_sysconfdir}/tempest/*.conf
 
 %files -n python2-%{pname}-tests
 %license LICENSE
@@ -189,7 +198,6 @@ stestr-3 --test-path $OS_TEST_PATH run
 %{python3_sitelib}/config_tempest
 %exclude %{python3_sitelib}/config_tempest/tests
 %{python3_sitelib}/python_tempestconf-*.egg-info
-%config(noreplace) %{_sysconfdir}/tempest/*.conf
 
 %files -n python3-%{pname}-tests
 %license LICENSE
@@ -203,3 +211,7 @@ stestr-3 --test-path $OS_TEST_PATH run
 %changelog
 * Mon Feb 19 2018 Chandan Kumar <chkumar@redhat.com> 1.1.4-1
 - Update to 1.1.4
+
+* Wed Aug 22 2018 Chandan Kumar <chkumar@redhat.com> 1.1.4-2
+- Fixed the doc dependencies for tempestconf-2.0.0
+- Removes default-overrides.conf as it is not needed
