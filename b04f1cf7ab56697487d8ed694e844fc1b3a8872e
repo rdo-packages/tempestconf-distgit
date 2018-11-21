@@ -16,6 +16,24 @@
       "revId": "b04f1cf7ab56697487d8ed694e844fc1b3a8872e",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9abe1de1_e161be3a",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2018-11-21T09:28:02Z",
+      "side": 1,
+      "message": "It matters, for example in Fedora python3-pyyaml is not provided, ex:-\nrpm -qp --provides https://kojipkgs.fedoraproject.org//packages/PyYAML/4.1/3.fc29/x86_64/python3-PyYAML-4.1-3.fc29.x86_64.rpm\npython3-PyYAML \u003d 4.1-3.fc29\npython3-PyYAML(x86-64) \u003d 4.1-3.fc29\npython3-yaml \u003d 4.1-3.fc29\npython3-yaml(x86-64) \u003d 4.1-3.fc29\npython3.7dist(pyyaml) \u003d 4.1\npython3dist(pyyaml) \u003d 4.1",
+      "parentUuid": "9abe1de1_8110c2a9",
+      "revId": "b04f1cf7ab56697487d8ed694e844fc1b3a8872e",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
