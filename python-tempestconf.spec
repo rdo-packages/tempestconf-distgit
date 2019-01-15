@@ -12,6 +12,8 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global pname tempestconf
 
+%global with_doc 1
+
 %global common_desc \
 python-tempestconf will automatically generates the tempest \
 configuration based on your cloud.
@@ -85,6 +87,7 @@ Requires:   python%{pyver}-testtools
 
 It contains the test suite.
 
+%if 0%{?with_doc}
 %package -n python-%{pname}-doc
 Summary:        python-tempestconf documentation
 
@@ -97,6 +100,7 @@ BuildRequires:  python%{pyver}-sphinx-argparse >= 0.2.2
 %{common_desc}
 
 Documentation for python-tempestconf
+%endif
 
 %prep
 %autosetup -n python-tempestconf-%{upstream_version} -S git
@@ -104,11 +108,13 @@ Documentation for python-tempestconf
 %build
 %{pyver_build}
 
+%if 0%{?with_doc}
 # generate html docs
 export PYTHONPATH=.
 sphinx-build-%{pyver} -W -b html doc/source doc/build/html
 # remove the sphinx-build-%{pyver} leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
+%endif
 
 %install
 %{pyver_install}
@@ -138,8 +144,10 @@ stestr-%{pyver} --test-path $OS_TEST_PATH run
 %license LICENSE
 %{pyver_sitelib}/config_tempest/tests
 
+%if 0%{?with_doc}
 %files -n python-%{pname}-doc
 %license LICENSE
 %doc doc/build/html
+%endif
 
 %changelog
