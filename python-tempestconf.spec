@@ -61,6 +61,8 @@ Requires:       python%{pyver}-requests
 Requires:       python%{pyver}-os-client-config
 Requires:       python%{pyver}-castellan
 Requires:       python%{pyver}-cryptography
+Requires:       python%{pyver}-six
+Requires:       python%{pyver}-oslo-config
 
 # Handle python2 exception
 %if %{pyver} == 2
