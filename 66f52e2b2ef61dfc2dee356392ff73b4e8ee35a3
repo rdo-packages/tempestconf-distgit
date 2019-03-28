@@ -34,6 +34,24 @@
       "revId": "66f52e2b2ef61dfc2dee356392ff73b4e8ee35a3",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53dd685a_12de3593",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2019-03-28T10:18:27Z",
+      "side": 1,
+      "message": "i see 3.23.0 https://github.com/openstack/python-tempestconf/blob/master/requirements.txt#L10",
+      "parentUuid": "571f71be_fdeb79af",
+      "revId": "66f52e2b2ef61dfc2dee356392ff73b4e8ee35a3",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
