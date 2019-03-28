@@ -16,6 +16,24 @@
       "revId": "66f52e2b2ef61dfc2dee356392ff73b4e8ee35a3",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "571f71be_fdeb79af",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2019-03-28T10:04:16Z",
+      "side": 1,
+      "message": "Yes, correct",
+      "parentUuid": "498cd3ca_1e6de65f",
+      "revId": "66f52e2b2ef61dfc2dee356392ff73b4e8ee35a3",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
