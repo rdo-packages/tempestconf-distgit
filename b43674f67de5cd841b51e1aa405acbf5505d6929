@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9772c814_44e5afab",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2019-03-28T10:18:27Z",
+      "side": 1,
+      "message": "2:3.23.0 , oslo.config has epoch set so better to set here as well.",
+      "range": {
+        "startLine": 65,
+        "startChar": 46,
+        "endLine": 65,
+        "endChar": 52
+      },
+      "revId": "b43674f67de5cd841b51e1aa405acbf5505d6929",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
