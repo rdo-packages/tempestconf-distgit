@@ -131,6 +131,7 @@ rm -rf %{buildroot}/usr/etc/tempest/*
 export OS_TEST_PATH='./config_tempest/tests'
 export PATH=$PATH:$RPM_BUILD_ROOT/usr/bin
 export PYTHONPATH=$PWD
+export PYTHON=%{pyver_bin}
 stestr-%{pyver} --test-path $OS_TEST_PATH run
 
 %files -n python%{pyver}-%{pname}
