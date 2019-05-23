@@ -1,0 +1,126 @@
+From f78e343f3c7e259986de2e60d74a10a9a102b8e1 Mon Sep 17 00:00:00 2001
+From: Martin Kopec <mkopec@redhat.com>
+Date: Wed, 22 May 2019 14:50:51 +0000
+Subject: [PATCH] Fix checking of roles
+
+auth.tempest_roles option in tempest.conf might contain a list
+of roles. Therefore the review makes python-tempestconf handle
+that option as a list.
+
+Story: 2005758
+Task: 33466
+
+Change-Id: I8bfb1591dbfec22b905bd478ef23637dfa5e0ffd
+---
+ config_tempest/tests/test_users.py | 30 ++++++++++++++++++++-
+ config_tempest/users.py            | 42 +++++++++++++++++++++++-------
+ 2 files changed, 61 insertions(+), 11 deletions(-)
+
+diff --git a/config_tempest/tests/test_users.py b/config_tempest/tests/test_users.py
+index a0e9ef3..b671b28 100644
+--- a/config_tempest/tests/test_users.py
++++ b/config_tempest/tests/test_users.py
+@@ -28,7 +28,7 @@ class TestUsers(BaseConfigTempestTest):
+         # Story 2003388
+         super(TestUsers, self).setUp()
+         self.conf = self._get_conf("v2.0", "v3")
+-        self.conf.set("auth", "tempest_roles", "_member_")
++        self.conf.set("auth", "tempest_roles", "fake_role")
+         projects_client = self._get_clients(self.conf).projects
+         users_client = self._get_clients(self.conf).users
+         roles_client = self._get_clients(self.conf).roles
+@@ -300,3 +300,31 @@ class TestUsers(BaseConfigTempestTest):
+         self.Service.give_role_to_user(
+             username=self.username,
+             role_name=self.role_name)
++
++    def _check_user_roles(self, user_roles, system_roles):
++        self.Service._conf.set('auth', 'tempest_roles', user_roles)
++        return self.Service.check_user_roles(system_roles)
++
++    def test_check_user_role_exists(self):
++        system_roles = {'roles': [{'name': 'role1'}, {'name': 'role2'}]}
++        roles = self._check_user_roles('role1', system_roles)
++        self.assertEqual(roles[0], 'role1')
++
++    @mock.patch('logging.Logger.debug')
++    def test_check_user_role_does_not_exist(self, LOG_mock):
++        system_roles = {'roles': [{'name': 'role1'}, {'name': 'member'}]}
++        roles = self._check_user_roles('doesNotExist', system_roles)
++        # check if it fell down to member
++        conf = self.Service._conf
++        self.assertEqual(conf.get('auth', 'tempest_roles'), 'member')
++        self.assertEqual(roles, [])
++        self.assertEqual(len(LOG_mock.mock_calls), 3)
++
++    @mock.patch('logging.Logger.debug')
++    def test_check_user_role_does_not_exist_no_member(self, LOG_mock):
++        system_roles = {'roles': [{'name': 'role1'}]}
++        roles = self._check_user_roles('doesNotExist', system_roles)
++        conf = self.Service._conf
++        self.assertFalse(conf.has_option('auth', 'tempest_roles'))
++        self.assertEqual(roles, [])
++        self.assertEqual(len(LOG_mock.mock_calls), 3)
+diff --git a/config_tempest/users.py b/config_tempest/users.py
+index 9647448..833fcd3 100644
+--- a/config_tempest/users.py
++++ b/config_tempest/users.py
+@@ -71,16 +71,7 @@ class Users(object):
+         user_ids = [u['id'] for u in users['users'] if u['name'] == username]
+         user_id = user_ids[0]
+         roles = self.roles_client.list_roles()
+-        # check auth.tempest_roles
+-        roles_names = [r['name'] for r in roles['roles']]
+-        if self._conf.get('auth', 'tempest_roles') not in roles_names:
+-            # try 'member', usually it's present in a system
+-            if 'member' in roles_names:
+-                self._conf.set('auth', 'tempest_roles', 'member')
+-            else:
+-                # the default role/role given by user or 'member' role are not
+-                # present in the system, remove the option completely
+-                self._conf.remove_option('auth', 'tempest_roles')
++        self.check_user_roles(roles)
+         role_ids = [r['id'] for r in roles['roles'] if r['name'] == role_name]
+         if not role_ids:
+             if role_required:
+@@ -97,6 +88,37 @@ class Users(object):
+             LOG.debug("(no change) User '%s' already has the '%s' role in"
+                       " project '%s'", username, role_name, project_name)
+ 
++    def check_user_roles(self, roles):
++        """Check if roles provided by user (or the default one) exist.
++
++        :param roles: value returned by roles_client.list_roles
++        :type roles: dict
++        :return: List of the existing roles given by user (or by defaults)
++        :rtype: list
++        """
++        roles_names = [r['name'] for r in roles['roles']]
++        user_roles = self._conf.get('auth', 'tempest_roles').split(',')
++        available_roles = []
++        for r in user_roles:
++            if r in roles_names:
++                available_roles.append(r)
++            else:
++                LOG.debug("Provided %s role is not present in the system.", r)
++
++        if len(available_roles) == 0:
++            # try 'member' or 'Member', they might present in a system
++            if 'member' in roles_names:
++                self._conf.set('auth', 'tempest_roles', 'member')
++            elif 'Member' in roles_names:
++                self._conf.set('auth', 'tempest_roles', 'Member')
++            else:
++                # the default role/role given by user or 'member' role are not
++                # present in the system, remove the option completely
++                LOG.debug("Removing auth.tempest_roles because non of the "
++                          "provided roles exists.")
++                self._conf.remove_option('auth', 'tempest_roles')
++        return available_roles
++
+     def create_user_with_project(self, username, password, project_name):
+         """Create a user and a project if it doesn't exist.
+ 
+-- 
+2.21.0
+
