@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52871dae_a0b05391",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2019-05-23T16:35:30Z",
+      "side": 1,
+      "message": "should be 2.2.0-2",
+      "range": {
+        "startLine": 213,
+        "startChar": 53,
+        "endLine": 213,
+        "endChar": 57
+      },
+      "revId": "8a624ba961f8ff72ab4c61c7c91c5a7f38f40a18",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
