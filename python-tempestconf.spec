@@ -13,13 +13,14 @@ configuration based on your cloud.
 
 Name:           python-%{pname}
 Version:        2.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Tempest Config generator
 
 License:        ASL 2.0
 URL:            http://git.openstack.org/cgit/openstack/python-%{pname}
 Source0:        https://github.com/openstack/python-%{pname}/archive/%{upstream_version}.tar.gz
 
+Patch0001:      0001-Fix-checking-of-roles.patch
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
@@ -209,6 +210,9 @@ stestr-3 --test-path $OS_TEST_PATH run
 %doc doc/build/html
 
 %changelog
+* Thu May 23 2019 Chandan Kumar <chkumar@redhat.com> 2.0.0-2
+- Added patch for fixing the member role
+
 * Wed Aug 22 2018 RDO <dev@lists.rdoproject.org> 2.0.0-1
 - Update to 2.0.0
 
