@@ -1,0 +1,442 @@
+From 3abb0ae5c518639e467934d6ee5fa0de312b6333 Mon Sep 17 00:00:00 2001
+From: Martin Kopec <mkopec@redhat.com>
+Date: Tue, 4 Jun 2019 15:05:46 +0000
+Subject: [PATCH 1/2] Clear the difference between service type and name
+
+The current code mixes service type and service name based on
+the context. Service type should be service type allways. The
+same applies on service name. The patch clears the difference
+between these two different variables.
+
+Story: 2005820
+Task: 33577
+
+Change-Id: Ifdeaa2b854dfa2dcfda1491b522e4e67b822fc4f
+---
+ config_tempest/main.py                        |  2 +-
+ config_tempest/services/base.py               | 21 +++++------
+ config_tempest/services/compute.py            |  2 +-
+ config_tempest/services/identity.py           |  6 ++--
+ config_tempest/services/image.py              |  6 ++--
+ config_tempest/services/services.py           | 36 +++++++++++--------
+ config_tempest/services/share.py              |  2 +-
+ config_tempest/services/volume.py             |  4 +--
+ config_tempest/tests/services/test_base.py    |  2 ++
+ config_tempest/tests/services/test_boto.py    |  4 +--
+ .../tests/services/test_ceilometer.py         |  1 +
+ config_tempest/tests/services/test_compute.py |  1 +
+ .../tests/services/test_identity.py           |  1 +
+ config_tempest/tests/services/test_image.py   |  1 +
+ config_tempest/tests/services/test_network.py |  1 +
+ .../tests/services/test_object_storage.py     |  1 +
+ .../tests/services/test_services.py           | 15 +++++---
+ config_tempest/tests/services/test_volume.py  |  1 +
+ 18 files changed, 64 insertions(+), 43 deletions(-)
+
+diff --git a/config_tempest/main.py b/config_tempest/main.py
+index abf7318..e9b21d6 100755
+--- a/config_tempest/main.py
++++ b/config_tempest/main.py
+@@ -535,7 +535,7 @@ def config_tempest(**kwargs):
+                                 convert=kwargs.get('convert_to_raw', False))
+     image.create_tempest_images(conf)
+ 
+-    has_neutron = services.is_service("network")
++    has_neutron = services.is_service(**{"type": "network"})
+     network = services.get_service("network")
+     network.create_tempest_networks(has_neutron, conf,
+                                     kwargs.get('network_id'))
+diff --git a/config_tempest/services/base.py b/config_tempest/services/base.py
+index c02a691..d6917f7 100644
+--- a/config_tempest/services/base.py
++++ b/config_tempest/services/base.py
+@@ -28,9 +28,10 @@ class ServiceError(Exception):
+ 
+ 
+ class Service(object):
+-    def __init__(self, name, service_url, token, disable_ssl_validation,
+-                 client=None):
++    def __init__(self, name, s_type, service_url, token,
++                 disable_ssl_validation, client=None):
+         self.name = name
++        self.s_type = s_type
+         self.service_url = service_url
+         self.headers = {'Accept': 'application/json', 'X-Auth-Token': token}
+         self.disable_ssl_validation = disable_ssl_validation
+@@ -58,11 +59,11 @@ class Service(object):
+             r = http.request('GET', url, headers=self.headers)
+         except Exception as e:
+             LOG.error("Request on service '%s' with url '%s' failed",
+-                      (self.name, url))
++                      (self.s_type, url))
+             raise e
+         if r.status >= 400:
+             raise ServiceError("Request on service '%s' with url '%s' failed"
+-                               " with code %d" % (self.name, url, r.status))
++                               " with code %d" % (self.s_type, url, r.status))
+         return r.data
+ 
+     def set_extensions(self):
+@@ -131,21 +132,21 @@ class Service(object):
+         diverges from the service name. The main example is object-store
+         service where the <service>-feature-enabled is object-storage.
+         """
+-        return self.name
++        return self.s_type
+ 
+     def get_service_extension_key(self):
+         """Return the extension key for a particular service"""
+         return None
+ 
+-    def get_unversioned_service_name(self):
+-        """Return name of service without versions.
++    def get_unversioned_service_type(self):
++        """Return type of service without versions.
+ 
+         Some services are versioned like volumev2 and volumev3, we try to
+         discover these services checking the supported versions, so we need
+-        to know the unversioned service name for this.
+-        The default value is the name of the service.
++        to know the unversioned service type for this.
++        The default value is the type of the service.
+         """
+-        return self.name
++        return self.s_type
+ 
+     def post_configuration(self, conf, is_service):
+         """Do post congiruation steps.
+diff --git a/config_tempest/services/compute.py b/config_tempest/services/compute.py
+index 4d9bbe8..f1ba76e 100644
+--- a/config_tempest/services/compute.py
++++ b/config_tempest/services/compute.py
+@@ -63,7 +63,7 @@ class ComputeService(VersionedService):
+ 
+     def post_configuration(self, conf, is_service):
+         conf.set('compute-feature-enabled', 'attach_encrypted_volume',
+-                 str(is_service('key-manager')))
++                 str(is_service(**{'type': 'key-manager'})))
+ 
+     @staticmethod
+     def get_service_name():
+diff --git a/config_tempest/services/identity.py b/config_tempest/services/identity.py
+index 3d29f79..6a9780e 100644
+--- a/config_tempest/services/identity.py
++++ b/config_tempest/services/identity.py
+@@ -23,10 +23,10 @@ from config_tempest.services.base import VersionedService
+ 
+ 
+ class IdentityService(VersionedService):
+-    def __init__(self, name, service_url, token, disable_ssl_validation,
+-                 client=None):
++    def __init__(self, name, s_type, service_url, token,
++                 disable_ssl_validation, client=None):
+         super(IdentityService, self).__init__(
+-            name, service_url, token, disable_ssl_validation, client)
++            name, s_type, service_url, token, disable_ssl_validation, client)
+         self.extensions_v3 = []
+         version = ''
+         if 'v2' in self.service_url:
+diff --git a/config_tempest/services/image.py b/config_tempest/services/image.py
+index 1234587..7a50554 100644
+--- a/config_tempest/services/image.py
++++ b/config_tempest/services/image.py
+@@ -26,9 +26,9 @@ from config_tempest.services.base import VersionedService
+ 
+ class ImageService(VersionedService):
+ 
+-    def __init__(self, name, service_url, token, disable_ssl_validation,
+-                 client=None):
+-        super(ImageService, self).__init__(name, service_url, token,
++    def __init__(self, name, s_type, service_url, token,
++                 disable_ssl_validation, client=None):
++        super(ImageService, self).__init__(name, s_type, service_url, token,
+                                            disable_ssl_validation,
+                                            client)
+ 
+diff --git a/config_tempest/services/services.py b/config_tempest/services/services.py
+index 40a1db8..38016b3 100644
+--- a/config_tempest/services/services.py
++++ b/config_tempest/services/services.py
+@@ -96,7 +96,7 @@ class Services(object):
+                             endpoint_data), s_type)
+ 
+                     # Create the service class and add it to services list
+-                    service = s_class(s_type, url, token,
++                    service = s_class(s_name, s_type, url, token,
+                                       self._ssl_validation,
+                                       self._clients.get_service_client(
+                                           s_type))
+@@ -117,7 +117,7 @@ class Services(object):
+                     # service is not available
+                     # quickly instantiate a class in order to set
+                     # availability of the service
+-                    s = s_class(None, None, None, None)
++                    s = s_class(None, None, None, None, None)
+                     s.set_availability(self._conf, False)
+ 
+     def merge_exts_multiversion_service(self, service):
+@@ -129,11 +129,11 @@ class Services(object):
+         :param service: Service object
+         """
+         versions = service.get_supported_versions()
+-        service_name = service.get_unversioned_service_name()
++        service_type = service.get_unversioned_service_type()
+         services_lst = []
+         for v in versions:
+-            if self.is_service(service_name + v):
+-                services_lst.append(self.get_service(service_name + v))
++            if self.is_service(**{'type': service_type + v}):
++                services_lst.append(self.get_service(service_type + v))
+         services_lst.append(service)
+         service.extensions = self.merge_extensions(services_lst)
+ 
+@@ -196,28 +196,34 @@ class Services(object):
+         replace_text = port + "/identity/" + self._creds.identity_version
+         return url.replace("/identity", replace_text)
+ 
+-    def get_service(self, name):
++    def get_service(self, s_type):
+         """Finds and returns a service object
+ 
+-        :param name: Codename of a service
+-        :type name: string
++        :param s_type: Type of a service
++        :type s_type: string
+         :return: Service object
+         """
+         for service in self._services:
+-            if service.name == name:
++            if service.s_type == s_type:
+                 return service
+         return None
+ 
+-    def is_service(self, name):
++    def is_service(self, **kwargs):
+         """Returns true if a service is available, false otherwise
+ 
+-        :param name: Codename of a service
+-        :type name: string
++        :param kwargs: Search parameters (accepts service name or type)
+         :rtype: boolean
+         """
+-        if name not in self.available_services.values():
+-            return False
+-        return True
++        if kwargs.get('name'):
++            if kwargs.get('name') not in self.available_services.keys():
++                return False
++            return True
++
++        if kwargs.get('type'):
++            if kwargs.get('type') not in self.available_services.values():
++                return False
++            return True
++        return False
+ 
+     def post_configuration(self):
+         for s in self._services:
+diff --git a/config_tempest/services/share.py b/config_tempest/services/share.py
+index 0ce2590..14d355d 100644
+--- a/config_tempest/services/share.py
++++ b/config_tempest/services/share.py
+@@ -24,7 +24,7 @@ class ShareService(VersionedService):
+             conf.set('share', 'min_api_microversion', m_vs['min_microversion'])
+             conf.set('share', 'max_api_microversion', m_vs['max_microversion'])
+ 
+-    def get_unversioned_service_name(self):
++    def get_unversioned_service_type(self):
+         return 'share'
+ 
+     @staticmethod
+diff --git a/config_tempest/services/volume.py b/config_tempest/services/volume.py
+index fad7d86..4f30e30 100644
+--- a/config_tempest/services/volume.py
++++ b/config_tempest/services/volume.py
+@@ -52,7 +52,7 @@ class VolumeService(VersionedService):
+     def get_feature_name(self):
+         return 'volume'
+ 
+-    def get_unversioned_service_name(self):
++    def get_unversioned_service_type(self):
+         return 'volume'
+ 
+     @staticmethod
+@@ -61,7 +61,7 @@ class VolumeService(VersionedService):
+ 
+     def post_configuration(self, conf, is_service):
+         # Verify if the cinder backup service is enabled
+-        if not is_service("volumev3"):
++        if not is_service(**{"type": "volumev3"}):
+             C.LOG.info("No volume service found, "
+                        "skipping backup service check")
+             return
+diff --git a/config_tempest/tests/services/test_base.py b/config_tempest/tests/services/test_base.py
+index 02968fd..695944a 100644
+--- a/config_tempest/tests/services/test_base.py
++++ b/config_tempest/tests/services/test_base.py
+@@ -25,6 +25,7 @@ class TestService(BaseServiceTest):
+     def setUp(self):
+         super(TestService, self).setUp()
+         self.Service = Service("ServiceName",
++                               "ServiceType",
+                                self.FAKE_URL,
+                                self.FAKE_TOKEN,
+                                disable_ssl_validation=False)
+@@ -75,6 +76,7 @@ class TestVersionedService(BaseServiceTest):
+     def setUp(self):
+         super(TestVersionedService, self).setUp()
+         self.Service = VersionedService("ServiceName",
++                                        "ServiceType",
+                                         self.FAKE_URL,
+                                         self.FAKE_TOKEN,
+                                         disable_ssl_validation=False)
+diff --git a/config_tempest/tests/services/test_boto.py b/config_tempest/tests/services/test_boto.py
+index e26f8da..39d040f 100644
+--- a/config_tempest/tests/services/test_boto.py
++++ b/config_tempest/tests/services/test_boto.py
+@@ -35,7 +35,7 @@ class TestEc2Service(BaseConfigTempestTest):
+         self.Services = Services(self.clients, conf, self._get_creds(conf))
+ 
+     def test_set_default_tempest_options(self):
+-        service = Ec2Service("ec2", self.FAKE_URL, self.clients, False)
++        service = Ec2Service("ec2", "ec2", self.FAKE_URL, self.clients, False)
+         service.set_default_tempest_options(self.Services._conf)
+         ec2_url = self.Services._conf.get("boto", "ec2_url")
+         self.assertEqual(ec2_url, self.FAKE_URL)
+@@ -55,7 +55,7 @@ class TestS3Service(BaseConfigTempestTest):
+         self.Services = Services(self.clients, conf, self._get_creds(conf))
+ 
+     def test_set_default_tempest_options(self):
+-        service = S3Service("s3", self.FAKE_URL, self.clients, False)
++        service = S3Service("s3", "s3", self.FAKE_URL, self.clients, False)
+         service.set_default_tempest_options(self.Services._conf)
+         ec2_url = self.Services._conf.get("boto", "s3_url")
+         self.assertEqual(ec2_url, self.FAKE_URL)
+diff --git a/config_tempest/tests/services/test_ceilometer.py b/config_tempest/tests/services/test_ceilometer.py
+index c6ee3f2..9ea3b70 100644
+--- a/config_tempest/tests/services/test_ceilometer.py
++++ b/config_tempest/tests/services/test_ceilometer.py
+@@ -25,6 +25,7 @@ class TestCeilometerService(BaseServiceTest):
+     def setUp(self):
+         super(TestCeilometerService, self).setUp()
+         self.Service = ceilometer.MeteringService("ServiceName",
++                                                  "ServiceType",
+                                                   self.FAKE_URL,
+                                                   self.FAKE_TOKEN,
+                                                   disable_ssl_validation=False)
+diff --git a/config_tempest/tests/services/test_compute.py b/config_tempest/tests/services/test_compute.py
+index 2a901bc..5dbdfce 100644
+--- a/config_tempest/tests/services/test_compute.py
++++ b/config_tempest/tests/services/test_compute.py
+@@ -24,6 +24,7 @@ class TestComputeService(BaseServiceTest):
+     def setUp(self):
+         super(TestComputeService, self).setUp()
+         self.Service = ComputeService("ServiceName",
++                                      "ServiceType",
+                                       self.FAKE_URL,
+                                       self.FAKE_TOKEN,
+                                       disable_ssl_validation=False)
+diff --git a/config_tempest/tests/services/test_identity.py b/config_tempest/tests/services/test_identity.py
+index be52c4c..ff83059 100644
+--- a/config_tempest/tests/services/test_identity.py
++++ b/config_tempest/tests/services/test_identity.py
+@@ -25,6 +25,7 @@ class TestIdentityService(BaseServiceTest):
+     def setUp(self):
+         super(TestIdentityService, self).setUp()
+         self.Service = IdentityService("ServiceName",
++                                       "ServiceType",
+                                        self.FAKE_URL + 'v2.0/',
+                                        self.FAKE_TOKEN,
+                                        disable_ssl_validation=False)
+diff --git a/config_tempest/tests/services/test_image.py b/config_tempest/tests/services/test_image.py
+index dcf7c7e..0e4f339 100644
+--- a/config_tempest/tests/services/test_image.py
++++ b/config_tempest/tests/services/test_image.py
+@@ -33,6 +33,7 @@ class TestImageService(BaseServiceTest):
+     def setUp(self):
+         super(TestImageService, self).setUp()
+         self.Service = ImageService("ServiceName",
++                                    "ServiceType",
+                                     self.FAKE_URL,
+                                     self.FAKE_TOKEN,
+                                     disable_ssl_validation=False)
+diff --git a/config_tempest/tests/services/test_network.py b/config_tempest/tests/services/test_network.py
+index 642a43a..47ed22f 100644
+--- a/config_tempest/tests/services/test_network.py
++++ b/config_tempest/tests/services/test_network.py
+@@ -42,6 +42,7 @@ class TestNetworkService(BaseServiceTest):
+         super(TestNetworkService, self).setUp()
+         self.conf = TempestConf()
+         self.Service = NetworkService("ServiceName",
++                                      "ServiceType",
+                                       self.FAKE_URL,
+                                       self.FAKE_TOKEN,
+                                       disable_ssl_validation=False)
+diff --git a/config_tempest/tests/services/test_object_storage.py b/config_tempest/tests/services/test_object_storage.py
+index 55591cc..a6b0f77 100644
+--- a/config_tempest/tests/services/test_object_storage.py
++++ b/config_tempest/tests/services/test_object_storage.py
+@@ -25,6 +25,7 @@ class TestObjectStorageService(BaseServiceTest):
+     def setUp(self):
+         super(TestObjectStorageService, self).setUp()
+         self.Service = ObjectStorageService("ServiceName",
++                                            "ServiceType",
+                                             self.FAKE_URL,
+                                             self.FAKE_TOKEN,
+                                             disable_ssl_validation=False)
+diff --git a/config_tempest/tests/services/test_services.py b/config_tempest/tests/services/test_services.py
+index 8838fef..5a43850 100644
+--- a/config_tempest/tests/services/test_services.py
++++ b/config_tempest/tests/services/test_services.py
+@@ -40,7 +40,7 @@ class TestServices(BaseConfigTempestTest):
+     @mock.patch('config_tempest.services.services.Services.'
+                 'get_available_services')
+     def _create_services_instance(self, mock_avail, mock_discover, v2=False):
+-        mock_avail.return_value = {'my_service': 'my_service'}
++        mock_avail.return_value = {'my_service': 'my_type'}
+         conf = self._get_conf('v2', 'v3')
+         creds = self._get_creds(conf, v2=v2)
+         clients = mock.Mock()
+@@ -157,9 +157,9 @@ class TestServices(BaseConfigTempestTest):
+     def test_get_service(self):
+         services = self._create_services_instance()
+         exp_resp = mock.Mock()
+-        exp_resp.name = 'my_service'
++        exp_resp.s_type = 'my_service_type'
+         services._services = [exp_resp]
+-        resp = services.get_service('my_service')
++        resp = services.get_service('my_service_type')
+         self.assertEqual(resp, exp_resp)
+         resp = services.get_service('my')
+         self.assertEqual(resp, None)
+@@ -168,8 +168,13 @@ class TestServices(BaseConfigTempestTest):
+         services = self._create_services_instance()
+         service = mock.Mock()
+         service.name = 'my_service'
++        service.s_type = 'my_type'
+         services._services = [service]
+-        resp = services.is_service('my_service')
++        resp = services.is_service(name='my_service')
+         self.assertEqual(resp, True)
+-        resp = services.is_service('other_service')
++        resp = services.is_service(name='other_service')
++        self.assertEqual(resp, False)
++        resp = services.is_service(**{'type': 'my_type'})
++        self.assertEqual(resp, True)
++        resp = services.is_service(**{'type': 'other_type'})
+         self.assertEqual(resp, False)
+diff --git a/config_tempest/tests/services/test_volume.py b/config_tempest/tests/services/test_volume.py
+index 5bd15c5..02b1ba0 100644
+--- a/config_tempest/tests/services/test_volume.py
++++ b/config_tempest/tests/services/test_volume.py
+@@ -24,6 +24,7 @@ class TestVolumeService(BaseServiceTest):
+     def setUp(self):
+         super(TestVolumeService, self).setUp()
+         self.Service = volume.VolumeService("ServiceName",
++                                            "ServiceType",
+                                             self.FAKE_URL,
+                                             self.FAKE_TOKEN,
+                                             disable_ssl_validation=False)
+-- 
+2.21.0
+

@@ -13,7 +13,7 @@ configuration based on your cloud.
 
 Name:           python-%{pname}
 Version:        2.2.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        OpenStack Tempest Config generator
 
 License:        ASL 2.0
@@ -21,6 +21,8 @@ URL:            http://git.openstack.org/cgit/openstack/python-%{pname}
 Source0:        https://github.com/openstack/python-%{pname}/archive/%{upstream_version}.tar.gz
 
 Patch0001:      0001-Fix-checking-of-roles.patch
+Patch0002:      0001-Clear-the-difference-between-service-type-and-name.patch
+Patch0003:      0002-Fix-checking-for-volume-backup.patch
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
@@ -210,6 +212,11 @@ stestr-3 --test-path $OS_TEST_PATH run
 %doc doc/build/html
 
 %changelog
+* Wed Jun 05 2019 Chandan Kumar <chkumar@redhat.com> 2.2.0-3
+- Added patch for fixing volume backup service
+- https://review.opendev.org/#/c/663061/
+- https://review.opendev.org/#/c/662835/
+
 * Thu May 23 2019 Chandan Kumar <chkumar@redhat.com> 2.2.0-2
 - Added patch for fixing the member role
 

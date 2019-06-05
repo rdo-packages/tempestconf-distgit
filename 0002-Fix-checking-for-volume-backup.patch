@@ -1,0 +1,71 @@
+From 9d67bf760d49325fd19660ce48de93cb4bb5a083 Mon Sep 17 00:00:00 2001
+From: Martin Kopec <mkopec@redhat.com>
+Date: Mon, 3 Jun 2019 19:25:31 +0000
+Subject: [PATCH 2/2] Fix checking for volume backup
+
+The current code led to a situation when volume-feature-enabled.backup
+option in generated tempest.conf was supposed to be False, but
+python-tempestconf left there the tempest default value (True).
+The patch fixes that.
+
+Story: 2005820
+Task: 33575
+
+Change-Id: Iec08dfe1a9bb9c3fa573b5132ecc55f634a6cc07
+---
+ config_tempest/services/volume.py            | 13 ++++++++++---
+ config_tempest/tests/services/test_volume.py |  2 ++
+ 2 files changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/config_tempest/services/volume.py b/config_tempest/services/volume.py
+index 4f30e30..48eca8b 100644
+--- a/config_tempest/services/volume.py
++++ b/config_tempest/services/volume.py
+@@ -61,9 +61,10 @@ class VolumeService(VersionedService):
+ 
+     def post_configuration(self, conf, is_service):
+         # Verify if the cinder backup service is enabled
+-        if not is_service(**{"type": "volumev3"}):
++        if not is_service(name=self.name):
+             C.LOG.info("No volume service found, "
+                        "skipping backup service check")
++            conf.set('volume-feature-enabled', 'backup', 'False')
+             return
+         try:
+             params = {'binary': 'cinder-backup'}
+@@ -71,11 +72,17 @@ class VolumeService(VersionedService):
+         except exceptions.Forbidden:
+             C.LOG.warning("User has no permissions to list services - "
+                           "cinder-backup service can't be discovered.")
++            conf.set('volume-feature-enabled', 'backup', 'False')
+             return
+ 
+         if is_backup:
+-            # We only set backup to false if the service isn't running
+-            # otherwise we keep the default value
+             service = is_backup['services']
+             if not service or service[0]['state'] == 'down':
+                 conf.set('volume-feature-enabled', 'backup', 'False')
++            else:
++                # post_configuration method is called with every volume (v2,
++                # v3) service, therefore set the value with priority so that it
++                # can't be overrided by this method called from other instance
++                # of volume service
++                conf.set('volume-feature-enabled', 'backup', 'True',
++                         priority=True)
+diff --git a/config_tempest/tests/services/test_volume.py b/config_tempest/tests/services/test_volume.py
+index 02b1ba0..53f61ee 100644
+--- a/config_tempest/tests/services/test_volume.py
++++ b/config_tempest/tests/services/test_volume.py
+@@ -44,6 +44,8 @@ class TestVolumeService(BaseServiceTest):
+         mock_is_service.return_value = False
+         self.Service.post_configuration(self.conf, mock_is_service)
+         self.assertTrue(mock_logging.info.called)
++        self.assertEqual(self.conf.get('volume-feature-enabled', 'backup'),
++                         'False')
+ 
+     @mock.patch('config_tempest.services.services.Services.is_service')
+     def test_post_configuration_state_down(self, mock_is_service):
+-- 
+2.21.0
+
