@@ -13,7 +13,7 @@ configuration based on your cloud.
 
 Name:           python-%{pname}
 Version:        2.2.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        OpenStack Tempest Config generator
 
 License:        ASL 2.0
@@ -23,6 +23,7 @@ Source0:        https://github.com/openstack/python-%{pname}/archive/%{upstream_
 Patch0001:      0001-Fix-checking-of-roles.patch
 Patch0002:      0001-Clear-the-difference-between-service-type-and-name.patch
 Patch0003:      0002-Fix-checking-for-volume-backup.patch
+Patch0004:      0001-Remove-heat_stack_owner-role-assigning-to-user.patch
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
@@ -212,6 +213,10 @@ stestr-3 --test-path $OS_TEST_PATH run
 %doc doc/build/html
 
 %changelog
+* Thu Jun 06 2019 Chandan Kumar <chkumar@redhat.com> 2.2.0-4
+- Added patch for removing heat_stack_owner role
+- https://review.opendev.org/660913
+
 * Wed Jun 05 2019 Chandan Kumar <chkumar@redhat.com> 2.2.0-3
 - Added patch for fixing volume backup service
 - https://review.opendev.org/#/c/663061/
