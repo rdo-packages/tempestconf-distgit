@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a157a72_711f308a",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2019-06-21T14:57:46Z",
+      "side": 1,
+      "message": "i see rocky and stein are still 2.2.0, any reason to bump in queens before the newer releases.",
+      "revId": "ddeb11be2517013c997b868b5bf06cb2c7d5d488",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
