@@ -12,8 +12,8 @@ python-tempestconf will automatically generates the tempest \
 configuration based on your cloud.
 
 Name:           python-%{pname}
-Version:        2.2.0
-Release:        4%{?dist}
+Version:        2.2.1
+Release:        1%{?dist}
 Summary:        OpenStack Tempest Config generator
 
 License:        ASL 2.0
@@ -209,6 +209,9 @@ stestr-3 --test-path $OS_TEST_PATH run
 %doc doc/build/html
 
 %changelog
+* Sat Jun 29 2019 RDO <dev@lists.rdoproject.org> 2.2.1-1
+- Update to 2.2.1
+
 * Thu Jun 06 2019 Chandan Kumar <chkumar@redhat.com> 2.2.0-4
 - Remove all existing queens patches to fix rdoinfo pinning
   failure
