@@ -42,7 +42,7 @@ BuildRequires:  python%{pyver}-stestr
 BuildRequires:  python%{pyver}-testscenarios
 BuildRequires:  python%{pyver}-testtools
 BuildRequires:  python%{pyver}-tempest
-BuildRequires:  python%{pyver}-os-client-config
+BuildRequires:  python%{pyver}-openstacksdk >= 0.11.3
 
 %description
 %{common_desc}
@@ -58,7 +58,7 @@ Requires:       python%{pyver}-pbr >= 3.1.1
 Requires:       python%{pyver}-tempest >= 1:18.0.0
 Requires:       python%{pyver}-setuptools
 Requires:       python%{pyver}-requests
-Requires:       python%{pyver}-os-client-config
+Requires:       python%{pyver}-openstacksdk >= 0.11.3
 Requires:       python%{pyver}-castellan
 Requires:       python%{pyver}-cryptography
 Requires:       python%{pyver}-six
