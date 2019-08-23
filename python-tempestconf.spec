@@ -35,7 +35,7 @@ BuildRequires:  python2-stestr
 BuildRequires:  python2-testscenarios
 BuildRequires:  python2-testtools
 BuildRequires:  python2-tempest
-BuildRequires:  python2-os-client-config
+BuildRequires:  python2-openstacksdk >= 0.11.3
 
 %description
 %{common_desc}
@@ -48,7 +48,7 @@ Requires:       python2-pbr >= 1.8
 Requires:       python2-tempest >= 14.0.0
 Requires:       python2-setuptools
 Requires:       python2-requests
-Requires:       python2-os-client-config
+Requires:       python2-openstacksdk >= 0.11.3
 Requires:       python2-castellan
 Requires:       python2-cryptography
 %if 0%{?fedora} > 0
@@ -88,7 +88,7 @@ Requires:       python3-pbr >= 1.8
 Requires:       python3-tempest >= 14.0.0
 Requires:       python3-setuptools
 Requires:       python3-requests
-Requires:       python3-os-client-config
+Requires:       python3-openstacksdk >= 0.11.3
 Requires:       python-castellan
 Requires:       python3-cryptography
 Requires:       python3-PyYAML
@@ -106,7 +106,7 @@ BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 BuildRequires:  python3-tempest
-BuildRequires:  python3-os-client-config
+BuildRequires:  python3-openstacksdk >= 0.11.3
 
 Requires:   python3-subunit
 Requires:   python3-oslotest
