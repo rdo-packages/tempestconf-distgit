@@ -42,7 +42,7 @@ BuildRequires:  python%{pyver}-stestr
 BuildRequires:  python%{pyver}-testscenarios
 BuildRequires:  python%{pyver}-testtools
 BuildRequires:  python%{pyver}-tempest
-BuildRequires:  python%{pyver}-os-client-config
+BuildRequires:  python%{pyver}-openstacksdk
 
 %description
 %{common_desc}
