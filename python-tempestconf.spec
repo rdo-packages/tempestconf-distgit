@@ -13,7 +13,7 @@ configuration based on your cloud.
 
 Name:           python-%{pname}
 Version:        2.2.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Tempest Config generator
 
 License:        ASL 2.0
@@ -36,6 +36,7 @@ BuildRequires:  python2-testscenarios
 BuildRequires:  python2-testtools
 BuildRequires:  python2-tempest
 BuildRequires:  python2-os-client-config
+BuildRequires:  python2-openstacksdk >= 0.11.3
 
 %description
 %{common_desc}
@@ -48,7 +49,8 @@ Requires:       python2-pbr >= 1.8
 Requires:       python2-tempest >= 14.0.0
 Requires:       python2-setuptools
 Requires:       python2-requests
-Requires:       python2-os-client-config
+BuildRequires:  python2-os-client-config
+Requires:       python2-openstacksdk >= 0.11.3
 Requires:       python2-castellan
 Requires:       python2-cryptography
 %if 0%{?fedora} > 0
@@ -89,6 +91,7 @@ Requires:       python3-tempest >= 14.0.0
 Requires:       python3-setuptools
 Requires:       python3-requests
 Requires:       python3-os-client-config
+Requires:       python3-openstacksdk >= 0.11.3
 Requires:       python-castellan
 Requires:       python3-cryptography
 Requires:       python3-PyYAML
@@ -106,7 +109,8 @@ BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 BuildRequires:  python3-tempest
-BuildRequires:  python3-os-client-config
+Requires:       python3-os-client-config
+BuildRequires:  python3-openstacksdk >= 0.11.3
 
 Requires:   python3-subunit
 Requires:   python3-oslotest
@@ -209,6 +213,9 @@ stestr-3 --test-path $OS_TEST_PATH run
 %doc doc/build/html
 
 %changelog
+* Wed Sep 4 2019 Martin Kopec <mkopec@redhat.com> 2.2.1-2
+- Add openstacksdk dependency
+
 * Sat Jun 29 2019 RDO <dev@lists.rdoproject.org> 2.2.1-1
 - Update to 2.2.1
 
