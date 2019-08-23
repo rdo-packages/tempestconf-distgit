@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffa0318a_d0f6a643",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2019-08-23T10:57:28Z",
+      "side": 1,
+      "message": "Is it possible to set the minimum version here also, like\npython%{pyver}-openstacksdk \u003e\u003d \u003e\u003d0.11.3 so that we easily backport this to queens.\n1. https://github.com/openstack/python-tempestconf/blob/master/requirements.txt#L9\n2. https://cbs.centos.org/koji/buildinfo?buildID\u003d21567 the same version is also available for queens.",
+      "range": {
+        "startLine": 45,
+        "startChar": 16,
+        "endLine": 45,
+        "endChar": 43
+      },
+      "revId": "83f065270ce0f12c79c18fccaa246e81ab158942",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
