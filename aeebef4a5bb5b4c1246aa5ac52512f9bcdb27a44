@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bfe262d_2eb8c648",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2019-09-04T10:09:19Z",
+      "side": 1,
+      "message": "Keep this as a Requires",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "aeebef4a5bb5b4c1246aa5ac52512f9bcdb27a44",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46e97abd_8d1e9176",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2019-09-04T10:09:19Z",
+      "side": 1,
+      "message": "For the sake of proper ordering, could you have all BR before Requires? Also, I\u0027m not sure if you meant to change os-client-config from build requirement to runtime requirement for the tests subpackage.",
+      "revId": "aeebef4a5bb5b4c1246aa5ac52512f9bcdb27a44",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
