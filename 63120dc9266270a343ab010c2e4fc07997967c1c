@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "705274df_a67d7866",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2019-09-04T08:34:12Z",
+      "side": 1,
+      "message": "It needs to be incremented",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 16,
+        "endChar": 25
+      },
+      "revId": "63120dc9266270a343ab010c2e4fc07997967c1c",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61fe609b_c06267be",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2019-09-04T08:34:12Z",
+      "side": 1,
+      "message": "Please add the change log here",
+      "revId": "63120dc9266270a343ab010c2e4fc07997967c1c",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
