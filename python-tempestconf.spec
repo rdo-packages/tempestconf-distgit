@@ -12,8 +12,8 @@ python-tempestconf will automatically generates the tempest \
 configuration based on your cloud.
 
 Name:           python-%{pname}
-Version:        2.2.1
-Release:        2%{?dist}
+Version:        2.3.0
+Release:        1%{?dist}
 Summary:        OpenStack Tempest Config generator
 
 License:        ASL 2.0
@@ -35,7 +35,6 @@ BuildRequires:  python2-stestr
 BuildRequires:  python2-testscenarios
 BuildRequires:  python2-testtools
 BuildRequires:  python2-tempest
-BuildRequires:  python2-os-client-config
 BuildRequires:  python2-openstacksdk >= 0.11.3
 
 %description
@@ -49,7 +48,6 @@ Requires:       python2-pbr >= 1.8
 Requires:       python2-tempest >= 14.0.0
 Requires:       python2-setuptools
 Requires:       python2-requests
-Requires:       python2-os-client-config
 Requires:       python2-openstacksdk >= 0.11.3
 Requires:       python2-castellan
 Requires:       python2-cryptography
@@ -90,7 +88,6 @@ Requires:       python3-pbr >= 1.8
 Requires:       python3-tempest >= 14.0.0
 Requires:       python3-setuptools
 Requires:       python3-requests
-Requires:       python3-os-client-config
 Requires:       python3-openstacksdk >= 0.11.3
 Requires:       python-castellan
 Requires:       python3-cryptography
@@ -109,7 +106,6 @@ BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 BuildRequires:  python3-tempest
-BuildRequires:  python3-os-client-config
 BuildRequires:  python3-openstacksdk >= 0.11.3
 
 Requires:   python3-subunit
@@ -213,6 +209,9 @@ stestr-3 --test-path $OS_TEST_PATH run
 %doc doc/build/html
 
 %changelog
+* Thu Sep 05 2019 RDO <dev@lists.rdoproject.org> 2.3.0-1
+- Update to 2.3.0
+
 * Wed Sep 4 2019 Martin Kopec <mkopec@redhat.com> 2.2.1-2
 - Add openstacksdk dependency
 
