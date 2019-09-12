@@ -94,7 +94,6 @@ It contains the test suite.
 Summary:        python-tempestconf documentation
 
 BuildRequires:  python%{pyver}-sphinx
-BuildRequires:  python%{pyver}-oslo-sphinx
 BuildRequires:  python%{pyver}-openstackdocstheme
 BuildRequires:  python%{pyver}-sphinx-argparse >= 0.2.2
 
