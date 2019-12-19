@@ -12,7 +12,7 @@ python-tempestconf will automatically generates the tempest \
 configuration based on your cloud.
 
 Name:           python-%{pname}
-Version:        2.3.0
+Version:        2.4.0
 Release:        1%{?dist}
 Summary:        OpenStack Tempest Config generator
 
@@ -209,6 +209,9 @@ stestr-3 --test-path $OS_TEST_PATH run
 %doc doc/build/html
 
 %changelog
+* Thu Dec 19 2019 RDO <dev@lists.rdoproject.org> 2.4.0-1
+- Update to 2.4.0
+
 * Thu Sep 05 2019 RDO <dev@lists.rdoproject.org> 2.3.0-1
 - Update to 2.3.0
 
