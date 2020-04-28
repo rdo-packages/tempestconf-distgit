@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "eabbd50b_92782359",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2020-04-28T12:16:28Z",
+      "side": 1,
+      "message": "sphinx-build",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 14
+      },
+      "revId": "ba6263af3e0bcde414e2c8abfcf29a631ee0d9aa",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af658d68_21db13f8",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2020-04-28T12:16:28Z",
+      "side": 1,
+      "message": "sphinx-build",
+      "range": {
+        "startLine": 95,
+        "startChar": 13,
+        "endLine": 95,
+        "endChar": 27
+      },
+      "revId": "ba6263af3e0bcde414e2c8abfcf29a631ee0d9aa",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2e26179_84b8c363",
         "filename": "python-tempestconf.spec",
         "patchSetId": 2
@@ -49,6 +95,47 @@
       "side": 1,
       "message": "I believe we never really documented the usage of discover-tempest-config-\u003cn\u003e, and the documentation only refers to discover-tempest-config. So it should be fine to remove discover-tempest-config-3, and I guess we are early enough in Victoria\u0027s cycle to catch issues.",
       "parentUuid": "001a4349_08ee6485",
+      "revId": "ba6263af3e0bcde414e2c8abfcf29a631ee0d9aa",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cfa263e_b23c872b",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2020-04-28T12:16:28Z",
+      "side": 1,
+      "message": "this change will go to ussuri as well, but ok to cleanup as per your believes and see how it goes, /me will update the patch",
+      "parentUuid": "e50281c2_220a066b",
+      "revId": "ba6263af3e0bcde414e2c8abfcf29a631ee0d9aa",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9824044_27ad2a54",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2020-04-28T12:16:28Z",
+      "side": 1,
+      "message": "stestr",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 8
+      },
       "revId": "ba6263af3e0bcde414e2c8abfcf29a631ee0d9aa",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
