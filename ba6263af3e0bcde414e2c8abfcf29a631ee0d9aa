@@ -34,6 +34,24 @@
       "revId": "ba6263af3e0bcde414e2c8abfcf29a631ee0d9aa",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e50281c2_220a066b",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 141
+      },
+      "writtenOn": "2020-04-28T11:57:49Z",
+      "side": 1,
+      "message": "I believe we never really documented the usage of discover-tempest-config-\u003cn\u003e, and the documentation only refers to discover-tempest-config. So it should be fine to remove discover-tempest-config-3, and I guess we are early enough in Victoria\u0027s cycle to catch issues.",
+      "parentUuid": "001a4349_08ee6485",
+      "revId": "ba6263af3e0bcde414e2c8abfcf29a631ee0d9aa",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
