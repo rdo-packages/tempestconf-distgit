@@ -128,3 +128,4 @@ stestr --test-path $OS_TEST_PATH run
 %endif
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/python-tempestconf/commit/?id=f122d548db6bad33f4afbff51e4d6da1d13be1e0
