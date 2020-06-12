@@ -131,3 +131,4 @@ stestr --test-path $OS_TEST_PATH run
 * Thu May 07 2020 RDO <dev@lists.rdoproject.org> 2.5.0-1
 - Update to 2.5.0
 
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/python-tempestconf/commit/?id=f122d548db6bad33f4afbff51e4d6da1d13be1e0
