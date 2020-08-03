@@ -43,6 +43,9 @@ BuildRequires:  python%{pyver}-testscenarios
 BuildRequires:  python%{pyver}-testtools
 BuildRequires:  python%{pyver}-tempest
 BuildRequires:  python%{pyver}-openstacksdk >= 0.11.3
+%if %{pyver} == 2
+BuildRequires:  python2-mock
+%endif
 
 %description
 %{common_desc}
@@ -83,6 +86,9 @@ Requires:   python%{pyver}-oslotest
 Requires:   python%{pyver}-testrepository
 Requires:   python%{pyver}-testscenarios
 Requires:   python%{pyver}-testtools
+%if %{pyver} == 2
+Requires:      python2-mock
+%endif
 
 %description -n python%{pyver}-%{pname}-tests
 %{common_desc}
@@ -115,6 +121,11 @@ export PYTHONPATH=.
 sphinx-build-%{pyver} -W -b html doc/source doc/build/html
 # remove the sphinx-build-%{pyver} leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
+%endif
+
+# workaround for handling py2 and py3 mock issue
+%if %{pyver} == 2
+find ./config_tempest/tests -type f -exec sed -i -e 's/from unittest import mock/import mock/g' {} \;
 %endif
 
 %install
