@@ -67,6 +67,7 @@ Requires:       python%{pyver}-oslo-config >= 2:3.23.0
 # Handle python2 exception
 %if %{pyver} == 2
 Requires:      PyYAML
+Requires:      python2-mock
 %else
 Requires:      python%{pyver}-PyYAML
 %endif
@@ -115,6 +116,11 @@ export PYTHONPATH=.
 sphinx-build-%{pyver} -W -b html doc/source doc/build/html
 # remove the sphinx-build-%{pyver} leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
+%endif
+
+# workaround for handling py2 and py3 mock issue
+%if %{pyver} == 2
+find ./config_tempest/tests -type f -exec sed -i -e 's/from unittest import mock/import mock/g' {} \;
 %endif
 
 %install
