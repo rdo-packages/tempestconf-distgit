@@ -67,6 +67,7 @@ Requires:       python%{pyver}-oslo-config >= 2:3.23.0
 # Handle python2 exception
 %if %{pyver} == 2
 Requires:      PyYAML
+Requires:      unittest
 %else
 Requires:      python%{pyver}-PyYAML
 %endif
