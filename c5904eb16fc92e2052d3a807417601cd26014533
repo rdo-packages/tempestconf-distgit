@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb7f15b9_5c3aa34f",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2020-08-11T14:29:15Z",
+      "side": 1,
+      "message": "is it really runtime requirement for tempestconf? just seems a test dependency.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 27
+      },
+      "revId": "c5904eb16fc92e2052d3a807417601cd26014533",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
