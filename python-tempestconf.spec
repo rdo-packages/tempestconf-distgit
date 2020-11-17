@@ -34,7 +34,7 @@ BuildRequires:  openstack-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-pbr >= 3.1.1
 BuildRequires:  python3-setuptools
-BuildRequires:  git
+BuildRequires:  git-core
 
 # test dependencies
 
