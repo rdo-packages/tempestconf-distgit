@@ -1,0 +1,9 @@
+Code-Review+2: Javier Peña <jpena@redhat.com>
+Code-Review+2: Chandan Kumar <chkumar@redhat.com>
+Workflow+1: Chandan Kumar <chkumar@redhat.com>
+Verified+2: Yatin Karel <ykarel@redhat.com>
+Submitted-by: Yatin Karel <ykarel@redhat.com>
+Submitted-at: Thu, 03 Dec 2020 16:05:47 +0000
+Reviewed-on: https://review.rdoproject.org/r/31277
+Project: openstack/tempestconf-distgit
+Branch: refs/heads/victoria-rdo
