@@ -102,6 +102,7 @@ Summary:        python-tempestconf documentation
 BuildRequires:  python%{pyver}-sphinx
 BuildRequires:  python%{pyver}-openstackdocstheme
 BuildRequires:  python%{pyver}-sphinx-argparse >= 0.2.2
+BuildRequires:  python%{pyver}-sphinxcontrib-rsvgconverter
 
 %description -n python-%{pname}-doc
 %{common_desc}
