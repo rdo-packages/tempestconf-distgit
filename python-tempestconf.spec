@@ -33,6 +33,7 @@ BuildRequires:  python%{pyver}-devel
 BuildRequires:  python%{pyver}-pbr >= 3.1.1
 BuildRequires:  python%{pyver}-setuptools
 BuildRequires:  git
+BuildRequires:  python%{pyver}-tenacity
 
 # test dependencies
 
@@ -66,6 +67,7 @@ Requires:       python%{pyver}-castellan
 Requires:       python%{pyver}-cryptography
 Requires:       python%{pyver}-six
 Requires:       python%{pyver}-oslo-config >= 2:3.23.0
+Requires:       python%{pyver}-tenacity
 
 # Handle python2 exception
 %if %{pyver} == 2
