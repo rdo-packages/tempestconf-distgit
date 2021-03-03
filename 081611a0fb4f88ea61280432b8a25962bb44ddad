@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a70e03b4_f1916dfb",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2021-03-03T09:22:16Z",
+      "side": 1,
+      "message": "Please move it below line 47 so that other can know about test dependencies",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "081611a0fb4f88ea61280432b8a25962bb44ddad",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
