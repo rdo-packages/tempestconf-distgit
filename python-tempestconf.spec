@@ -34,7 +34,12 @@ BuildRequires:  openstack-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-pbr >= 3.1.1
 BuildRequires:  python3-setuptools
+<<<<<<< HEAD   (a61325 Add sphinxcontrib-rsvgconverter to doc deps)
 BuildRequires:  git
+=======
+BuildRequires:  python3-tenacity
+BuildRequires:  git-core
+>>>>>>> CHANGE (c0bb42 Add python3-tenacity to build dependences)
 
 # test dependencies
 
@@ -57,6 +62,7 @@ Obsoletes: python2-%{pname} < %{version}-%{release}
 Requires:       python3-pbr >= 3.1.1
 Requires:       python3-tempest >= 1:18.0.0
 Requires:       python3-requests
+Requires:       python3-tenacity
 Requires:       python3-openstacksdk >= 0.11.3
 Requires:       python3-six
 Requires:       python3-oslo-config >= 2:3.23.0
