@@ -1,0 +1,10 @@
+Code-Review+2: Luigi Toscano <ltoscano@redhat.com>
+Code-Review+2: Martin Kopec <xkopec42@gmail.com>
+Workflow+1: Martin Kopec <xkopec42@gmail.com>
+Code-Review+2: Chandan Kumar <chkumar@redhat.com>
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Wed, 03 Mar 2021 09:53:39 +0000
+Reviewed-on: https://review.rdoproject.org/r/32153
+Project: openstack/tempestconf-distgit
+Branch: refs/heads/rpm-master
