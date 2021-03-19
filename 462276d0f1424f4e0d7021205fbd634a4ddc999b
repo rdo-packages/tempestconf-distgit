@@ -1,0 +1,9 @@
+Code-Review+2: Martin Kopec <xkopec42@gmail.com>
+Code-Review+2: Chandan Kumar <chkumar@redhat.com>
+Verified+2: Alan Pevec <alan.pevec@redhat.com>
+Workflow+1: Alan Pevec <alan.pevec@redhat.com>
+Submitted-by: Alan Pevec <alan.pevec@redhat.com>
+Submitted-at: Fri, 19 Mar 2021 15:23:36 +0000
+Reviewed-on: https://review.rdoproject.org/r/c/openstack/tempestconf-distgit/+/32514
+Project: openstack/tempestconf-distgit
+Branch: refs/heads/victoria-rdo
