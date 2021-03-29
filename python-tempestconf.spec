@@ -63,7 +63,7 @@ Requires:       python3-openstacksdk >= 0.11.3
 Requires:       python3-six
 Requires:       python3-oslo-config >= 2:3.23.0
 
-Requires:      python3-PyYAML
+Requires:      python3-yaml >= 3.12
 
 %description -n python3-%{pname}
 %{common_desc}
