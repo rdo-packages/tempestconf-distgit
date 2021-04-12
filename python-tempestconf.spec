@@ -12,7 +12,9 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global pname tempestconf
 
+%if %{pyver} == 3
 %global with_doc 1
+%endif
 
 %global common_desc \
 python-tempestconf will automatically generates the tempest \
@@ -33,6 +35,9 @@ BuildRequires:  python%{pyver}-devel
 BuildRequires:  python%{pyver}-pbr >= 3.1.1
 BuildRequires:  python%{pyver}-setuptools
 BuildRequires:  git
+%if %{pyver} == 2
+BuildRequires:  python3-tenacity
+%endif
 
 # test dependencies
 
@@ -61,6 +66,9 @@ Requires:       python%{pyver}-pbr >= 3.1.1
 Requires:       python%{pyver}-tempest >= 1:18.0.0
 Requires:       python%{pyver}-setuptools
 Requires:       python%{pyver}-requests
+%if %{pyver} == 2
+BuildRequires:  python3-tenacity
+%endif
 Requires:       python%{pyver}-openstacksdk >= 0.11.3
 Requires:       python%{pyver}-castellan
 Requires:       python%{pyver}-cryptography
