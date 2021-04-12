@@ -12,7 +12,11 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global pname tempestconf
 
+%if %{pyver} == 3
 %global with_doc 1
+%else
+%global with_doc 0
+%endif
 
 %global common_desc \
 python-tempestconf will automatically generates the tempest \
