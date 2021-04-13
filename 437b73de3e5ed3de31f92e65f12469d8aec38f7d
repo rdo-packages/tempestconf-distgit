@@ -1,0 +1,10 @@
+Code-Review+2: Javier Peña <jpena@redhat.com>
+Code-Review+2: Chandan Kumar <chkumar@redhat.com>
+Code-Review+2: Luigi Toscano <ltoscano@redhat.com>
+Workflow+1: Chandan Kumar <chkumar@redhat.com>
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Tue, 13 Apr 2021 17:13:45 +0000
+Reviewed-on: https://review.rdoproject.org/r/c/openstack/tempestconf-distgit/+/33234
+Project: openstack/tempestconf-distgit
+Branch: refs/heads/train-rdo
