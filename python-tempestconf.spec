@@ -10,8 +10,8 @@ python-tempestconf will automatically generates the tempest \
 configuration based on your cloud.
 
 Name:           python-%{pname}
-Version:        XXX
-Release:        XXX
+Version:        3.2.0
+Release:        1%{?dist}
 Summary:        OpenStack Tempest Config generator
 
 License:        ASL 2.0
@@ -148,3 +148,6 @@ stestr --test-path $OS_TEST_PATH run
 %endif
 
 %changelog
+* Mon May 03 2021 RDO <dev@lists.rdoproject.org> 3.2.0-1
+- Update to 3.2.0
+
