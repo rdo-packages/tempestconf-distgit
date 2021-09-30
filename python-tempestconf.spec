@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+%global sources_gpg_sign 0x5d2d1e4fb8d38e6af76c50d53d4fec30cf5ce3da
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global pname tempestconf
 
@@ -10,8 +10,8 @@ python-tempestconf will automatically generates the tempest \
 configuration based on your cloud.
 
 Name:           python-%{pname}
-Version:        XXX
-Release:        XXX
+Version:        3.2.1
+Release:        1%{?dist}
 Summary:        OpenStack Tempest Config generator
 
 License:        ASL 2.0
@@ -148,3 +148,6 @@ stestr --test-path $OS_TEST_PATH run
 %endif
 
 %changelog
+* Thu Sep 30 2021 RDO <dev@lists.rdoproject.org> 3.2.1-1
+- Update to 3.2.1
+
