@@ -78,6 +78,7 @@ BuildRequires:  python3-sphinx
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-sphinx-argparse >= 0.2.2
 BuildRequires:  python3-sphinxcontrib-rsvgconverter
+BuildRequires:  python3-reno
 
 %description -n python-%{pname}-doc
 %{common_desc}
@@ -94,6 +95,7 @@ Documentation for python-tempestconf
 %if 0%{?with_doc}
 # generate html docs
 export PYTHONPATH=.
+sed -i '/^ *releasenotes\/index/d' doc/source/index.rst
 sphinx-build -W -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
