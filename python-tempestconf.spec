@@ -91,6 +91,7 @@ BuildRequires:  python3-sphinx
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-sphinx-argparse >= 0.2.2
 BuildRequires:  python3-sphinxcontrib-rsvgconverter
+BuildRequires:  python3-reno
 
 %description -n python-%{pname}-doc
 %{common_desc}
