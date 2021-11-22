@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0f5a8a9_650f10f3",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 141
+      },
+      "writtenOn": "2021-11-22T09:29:37Z",
+      "side": 1,
+      "message": "with this sed, is python3-reno still needed as builddep?",
+      "revId": "42bdf799699479078ed88f88d9850940a09a71ab",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": true
+    }
+  ]
+}
