@@ -16,6 +16,24 @@
       "revId": "42bdf799699479078ed88f88d9850940a09a71ab",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32d75b3c_d37886fe",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2021-11-22T09:35:53Z",
+      "side": 1,
+      "message": "yes, we need it because we have reno listed in conf.py:\n\nhttps://review.opendev.org/c/openinfra/python-tempestconf/+/815474/10/doc/source/conf.py",
+      "parentUuid": "b0f5a8a9_650f10f3",
+      "revId": "42bdf799699479078ed88f88d9850940a09a71ab",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": true
     }
   ]
 }
