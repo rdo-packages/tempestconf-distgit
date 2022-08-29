@@ -1,0 +1,8 @@
+Code-Review+2: Luigi Toscano <ltoscano@redhat.com>
+Workflow+1: Luigi Toscano <ltoscano@redhat.com>
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Mon, 29 Aug 2022 09:01:00 +0000
+Reviewed-on: https://review.rdoproject.org/r/c/openstack/tempestconf-distgit/+/44673
+Project: openstack/tempestconf-distgit
+Branch: refs/heads/ussuri-rdo
