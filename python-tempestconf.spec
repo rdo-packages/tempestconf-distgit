@@ -150,3 +150,4 @@ stestr --test-path $OS_TEST_PATH run
 %endif
 
 %changelog
+# REMOVEME: error caused by commit https://opendev.org/osf/python-tempestconf/commit/9aec82a78893cdf469d070d1aa811a595003d3d9
