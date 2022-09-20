@@ -16,10 +16,10 @@ Summary:        OpenStack Tempest Config generator
 
 License:        ASL 2.0
 URL:            http://git.openstack.org/cgit/openstack/python-%{pname}
-Source0:        http://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz
+Source0:        https://tarballs.opendev.org/openinfra/%{name}/%{name}-%{upstream_version}.tar.gz
 # Required for tarball sources verification
 %if 0%{?sources_gpg} == 1
-Source101:        http://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz.asc
+Source101:        https://tarballs.opendev.org/openinfra/%{name}/%{name}-%{upstream_version}.tar.gz.asc
 Source102:        https://releases.openstack.org/_static/%{sources_gpg_sign}.txt
 %endif
 
