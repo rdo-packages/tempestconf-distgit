@@ -153,3 +153,4 @@ stestr --test-path $OS_TEST_PATH run
 * Mon May 03 2021 RDO <dev@lists.rdoproject.org> 3.2.0-1
 - Update to 3.2.0
 
+# REMOVEME: error caused by commit https://opendev.org/osf/python-tempestconf/commit/6488be3e8294ddceea0028b208bdcda791dc0a67
