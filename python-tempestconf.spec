@@ -150,3 +150,4 @@ stestr --test-path $OS_TEST_PATH run
 %endif
 
 %changelog
+
