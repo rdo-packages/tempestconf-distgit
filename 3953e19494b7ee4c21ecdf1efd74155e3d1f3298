@@ -22,6 +22,30 @@
       },
       "revId": "3953e19494b7ee4c21ecdf1efd74155e3d1f3298",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "666c6867_d87beafc",
+        "filename": "python-tempestconf.spec",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2023-06-27T10:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c2181d_b84ef141",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "3953e19494b7ee4c21ecdf1efd74155e3d1f3298",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }
