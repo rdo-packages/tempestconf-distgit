@@ -17,8 +17,8 @@ python-tempestconf will automatically generates the tempest \
 configuration based on your cloud.
 
 Name:           python-%{pname}
-Version:        XXX
-Release:        XXX
+Version:        3.5.1
+Release:        1%{?dist}
 Summary:        OpenStack Tempest Config generator
 
 License:        Apache-2.0
@@ -150,3 +150,6 @@ export OS_TEST_PATH='./config_tempest/tests'
 %endif
 
 %changelog
+* Tue Mar 18 2025 RDO <dev@lists.rdoproject.org> 3.5.1-1
+- Update to 3.5.1
+
