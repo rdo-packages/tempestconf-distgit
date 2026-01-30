@@ -153,3 +153,4 @@ export OS_TEST_PATH='./config_tempest/tests'
 * Mon Sep 23 2024 RDO <dev@lists.rdoproject.org> 3.5.0-1
 - Update to 3.5.0
 
+# REMOVEME: error caused by commit https://opendev.org/osf/python-tempestconf/commit/6694bdd7e48e3461776226733fb94dac34ffd0a8
